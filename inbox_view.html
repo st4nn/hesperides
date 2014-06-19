@@ -1,0 +1,30 @@
+
+<div class="row-fluid">
+    <div class="span12 reply-head">
+        <h3 id='lblAsunto' class="pull-left"></h3>
+    </div>
+</div>
+<div class="inbox-view-info row-fluid">
+	<div class="span9">
+		<img src="img/avatar1_small.jpg">
+		De <span id='lblRemitente' class="bold"></span> para <span id='lblDestinatario' class="bold"></span> en <span id='lblFecha'></span>
+	</div>
+</div>
+<div id='lblMensaje' class="inbox-view"></div>
+<hr>
+<script type="text/javascript">
+    jQuery(document).ready(function() 
+    {
+    	var idMensaje = $("#txtIdMensaje").val();
+    	console.log(idMensaje);
+    	$.post("php/cargarCorreo.php", {pIdMensaje: idMensaje}, 
+    		function(correo)
+    		{
+    			$("#lblAsunto").text(correo.Asunto);
+    			$("#lblRemitente").text(correo.nombreRemitente);
+    			$("#lblDestinatario").text(correo.nombreDestinaraio);
+    			$("#lblFecha").text(correo.Fecha);
+    			$("#lblMensaje").text(correo.Mensaje);
+    		}, "json");
+    });
+    </script>

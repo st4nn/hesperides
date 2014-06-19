@@ -1,0 +1,56 @@
+<html>
+<head>
+    
+</head>
+<body>
+    <table id='tablaMensajes' class="table table-striped table-advance table-hover">
+        <thead></thead>
+        <tbody></tbody>
+    </table>
+    <script type="text/javascript">
+    jQuery(document).ready(function() 
+    {
+        var pTipo = "Recibidos";
+        if ($(".pull-left").text() == "Entrada")
+        {
+            pTipo = "Enviados";
+        }
+
+        $("#tablaMensajes").cargarCorreos({idUsuario: Usuario.id, Estado: "Todos", Tipo: pTipo},
+            function (Correos) 
+            {
+                $(".lblContadorMensajes").show();
+                var Clase = "";
+                var tds ="";
+                var contadorPendientes = 0;
+                $.each(Correos, function(index, correo)
+                    {
+                        Clase = "";
+                        tds="";
+                        
+                        if (correo.Estado = 'Pendiente')
+                        {
+                            Clase = 'unread';
+                            contadorPendientes++;
+                        }
+                        tds += '<tr class="' + Clase + '" idMensaje="' + correo.idMensaje + '">';
+                            tds += '<td class="inbox-small-cells"></td>';
+                            tds += '<td class="view-message  hidden-phone">' + correo.nombreRemitente + '</td>';
+                            tds += '<td class="view-message ">' + correo.Asunto + '</td>';
+                            tds += '<td class="view-message  text-right">' + correo.Fecha + '</td>';
+                        tds += '</tr>';
+                        $("#tablaMensajes tbody").append(tds);
+                    });
+                if (contadorPendientes > 0)
+                {
+                    $(".lblContadorMensajes").text(contadorPendientes);
+                    
+                } else
+                {
+                    $(".lblContadorMensajes").hide();
+                }
+            });
+    });
+    </script>
+</body>
+</html>
