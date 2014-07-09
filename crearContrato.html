@@ -93,8 +93,8 @@
                     </div>
                  </div>
                   <div class="form-actions">
-                      <button type="submit" class="btn blue"><i class="icon-ok"></i> Guardar</button>
-                      <button type="reset" class="btn"><i class=" icon-remove"></i> Cancelar</button>
+                      <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Guardar</button>
+                      <button type="reset" class="btn btn-danger"><i class=" icon-remove"></i> Cancelar</button>
                   </div>
               </form>
             </div>
@@ -123,11 +123,12 @@
             changeMonth: true,
             changeYear: true
           });
-          $("#grpContratoFechaInicio .add-on").click(function()
+
+          $("#grpContratoFechaInicio .add-on").on("click", function()
           {
             $("#grpContratoFechaInicio input").datepicker("show");
           });
-          $("#grpContratoFechaTerminacion .add-on").click(function()
+          $("#grpContratoFechaTerminacion .add-on").on("click", function()
           {
             $("#grpContratoFechaTerminacion input").datepicker("show");
           });
