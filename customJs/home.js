@@ -11,6 +11,9 @@ function appReady()
   $("#btnEnviarCorreo").live('click', btnEnviarCorreo_Click);
 
   $("#tablaMensajes tr").live('click', verCorreo);
+
+  $("#modulo").load("Inicio.html");
+  $("#tituloDelModulo h4 span").text("Inicio");
 }
 
 function cagarBarraSuperior(pUsuario)
@@ -177,6 +180,7 @@ $.fn.crearTabla1 = function(options, callback)
 
 /*plugin*/
 
+  $('#' + idTabla).dataTable().fnDestroy();
   $('#' + idTabla).dataTable({
             "sDom": "<'row-fluid'<'span6'l><'span6'f>r>t<'row-fluid'<'span6'i><'span6'p>>",
             "sPaginationType": "bootstrap",
@@ -222,4 +226,36 @@ function btnEnviarCorreo_Click(event)
 function verCorreo()
 {
   $("#txtIdMensaje").val($(this).attr('idMensaje'));
+}
+$.fn.cargarUsuarios = function(options, callback)
+      {
+        var defaults =
+        {
+          idUsuario : "0"
+        }
+        var options = $.extend(defaults, options);
+        if (callback === undefined)
+        {callback = function(){};}
+
+      /*plugin*/
+      
+        $.post("php/cargarUsuarios.php", 
+          {},
+          function(data, textStatus, xhr)
+          {
+            callback(data);
+          },"json");
+      /*plugin*/
+
+      //Averigua si el parámetro contiene una función de ser así llamarla
+        if($.isFunction(options.onComplete)) 
+        {options.onComplete.call();}
+      };
+
+function Mensaje(Titulo, Mensaje)
+{
+  $.gritter.add({
+        title: Titulo,
+        text: Mensaje
+      });
 }

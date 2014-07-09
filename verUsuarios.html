@@ -16,15 +16,19 @@
                             <table class="table table-striped table-bordered" id="sample_1">
                             <thead>
                                 <tr>
-                                    <th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>
-                                    <th>Username</th>
-                                    <th class="hidden-phone">Email</th>
-                                    <th class="hidden-phone">Points</th>
-                                    <th class="hidden-phone">Joined</th>
-                                    <th class="hidden-phone"></th>
+                                    <!--<th style="width:8px;"><input type="checkbox" class="group-checkable" data-set="#sample_1 .checkboxes" /></th>-->
+                                    <th>Id</th>
+                                    <th class="hidden-phone">Usuario</th>
+                                    <th class="hidden-phone">Empresa</th>
+                                    <th class="hidden-phone">Nombre</th>
+                                    <th class="hidden-phone">Correo</th>
+                                    <th class="hidden-phone">Perfil</th>
+                                    <th class="hidden-phone">Estado</th>
+                                    <!--<th class="hidden-phone"></th>-->
                                 </tr>
                             </thead>
                             <tbody>
+                              <!--
                                 <tr class="odd gradeX">
                                     <td><input type="checkbox" class="checkboxes" value="1" /></td>
                                     <td>Jhone doe</td>
@@ -33,6 +37,7 @@
                                     <td class="center hidden-phone">02.03.2013</td>
                                     <td class="hidden-phone"><span class="label label-success">Approved</span></td>
                                 </tr>
+                              -->
                             </tbody>
                         </table>
                         </div>
@@ -49,7 +54,33 @@
    <script>
       jQuery(document).ready(function() {       
          // initiate layout and plugins
-         $("#sample_1").crearTabla1({lblMenu : "Usuarios por página"});
+         $("#sample_1").cargarUsuarios({idUsuario: Usuario.id},function(Usuarios)
+          {
+            $("#sample_1 tbody td").remove();
+            var tds = "";
+            var estado = "";
+            $.each(Usuarios, function (index, Usuario) 
+            {
+              estado = "success";
+              if (Usuario.Estado != "Activo")
+              {
+                estado = "warning";
+              }
+              
+              tds += '<tr class="odd gradeX">';
+                  tds += '<td>' + Usuario.idLogin + '</td>'
+                  tds += '<td>' + Usuario.Usuario + '</td>'
+                  tds += '<td>' + Usuario.Empresa + '</td>'
+                  tds += '<td>' + Usuario.Nombre + '</td>'
+                  tds += '<td>' + Usuario.Correo + '</td>'
+                  tds += '<td>' + Usuario.Perfil + '</td>'
+                  tds += '<td class="hidden-phone"><span class="label label-' + estado + '">'+ Usuario.Estado +'</span></td>';
+              tds += '</tr>';
+            });
+            $("#sample_1 tbody").append(tds);
+            $("#sample_1").crearTabla1({lblMenu : "Usuarios por página"});
+          });
+         
       });
    </script>
 </body>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
+<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
+<!--[if !IE]><!--> <html lang="es"> <!--<![endif]-->
+<!-- BEGIN HEAD -->
+<head>
+	<meta charset="utf-8" />
+	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
+</head>
+<!-- END HEAD -->
+<!-- BEGIN BODY -->
+<body class="fixed-top">
+	<!-- BEGIN CONTAINER -->
+	<div id="container" class="row-fluid">
+		<!-- BEGIN PAGE -->
+		
+			<!-- BEGIN PAGE CONTAINER-->
+			<div class="container-fluid">
+				<!-- BEGIN PAGE CONTENT-->
+				<div id="page" class="dashboard">
+                    <!-- BEGIN OVERVIEW STATISTIC BLOCKS-->
+                    <div id='txtEstadisticas' class="row-fluid circle-state-overview">
+                        <div class="span2 responsive" data-tablet="span3" data-desktop="span2">
+                            <div class="circle-stat block">
+                                <div class="visual">
+                                    <div class="circle-state-icon">
+                                        <i class="icon-user turquoise-color"></i>
+                                    </div>
+                                    <input id='txtThick_Usuarios' class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" data-readOnly='true' value="0" data-fgColor="#4CC5CD" data-bgColor="#ddd">
+                                </div>
+                                <div class="details">
+                                    <div class="number" id='txtNum_Usuarios'>+0</div>
+                                    <div class="title">Usuarios</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="span2 responsive" data-tablet="span3" data-desktop="span2">
+                            <div class="circle-stat block">
+                                <div class="visual">
+                                    <div class="circle-state-icon">
+                                        <i class="icon-cogs red-color"></i>
+                                    </div>
+                                    <input id='txtThick_Empresas' class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" data-readOnly='true' value="0" data-fgColor="#e17f90" data-bgColor="#ddd">
+                                </div>
+                                <div class="details">
+                                    <div class="number" id='txtNum_Empresas'>+0</div>
+                                    <div class="title">Empresas</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="span2 responsive" data-tablet="span3" data-desktop="span2">
+                            <div class="circle-stat block">
+                                <div class="visual">
+                                    <div class="circle-state-icon">
+                                        <i class="icon-briefcase green-color"></i>
+                                    </div>
+                                    <input id='txtThick_Pruebas' class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" data-readOnly='true' value="0" data-fgColor="#a8c77b" data-bgColor="#ddd">
+                                </div>
+                                <div class="details">
+                                    <div class="number" id='txtNum_Pruebas'>+0</div>
+                                    <div class="title">Pruebas</div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="span2 responsive" data-tablet="span3" data-desktop="span2">
+                            <div class="circle-stat block">
+                                <div class="visual">
+                                    <div class="circle-state-icon">
+                                        <i class="icon-book gray-color"></i>
+                                    </div>
+                                    <input id='txtThick_Contratos' class="knob" data-width="100" data-height="100" data-displayPrevious=true  data-thickness=".2" data-readOnly='true' value="0" data-fgColor="#b9baba" data-bgColor="#ddd">
+                                </div>
+                                <div class="details">
+                                    <div class="number" id='txtNum_Contratos'>+0</div>
+                                    <div class="title">Contratos</div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END OVERVIEW STATISTIC BLOCKS-->
+                    <div id='txtError' class="alert alert-error noMostrar">
+                        <button class="close" data-dismiss="alert">×</button>
+                        <strong>Error!</strong> No hay conexión con el Servidor.
+                    </div>
+                </div>
+			</div>
+			<!-- END PAGE CONTAINER-->
+		
+		<!-- END PAGE -->
+	</div>
+	<!-- END CONTAINER -->
+	<!-- BEGIN JAVASCRIPTS -->
+	<script src="assets/jquery-knob/js/jquery.knob.js"></script>
+	<script>
+		jQuery(document).ready(function() {
+			// initiate layout and plugins
+			App.setMainPage(true);
+            $.post('php/cargarEstadisticas_Inicio.php', function(data, textStatus, xhr) 
+            {
+                $("#txtEstadisticas").slideDown();
+                $("#txtThick_Usuarios").val(data.usuarios);
+                $("#txtThick_Empresas").val(data.empresas);
+                $("#txtThick_Pruebas").val(data.pruebas);
+                $("#txtThick_Contratos").val(data.contratos);
+
+                $("#txtNum_Usuarios").text("+" + data.usuarios);
+                $("#txtNum_Empresas").text("+" + data.empresas);
+                $("#txtNum_Pruebas").text("+" + data.pruebas);
+                $("#txtNum_Contratos").text("+" + data.contratos);
+
+                $(".knob").knob();
+            }, 'json').always(function() 
+              {
+                //Cuando Finaliza
+              }).fail(function() {
+                Mensaje("Error", "No hay conexión con el servidor");
+                $("#txtEstadisticas").slideUp();
+                $("#txtError").slideDown();
+              });
+		});
+	</script>
+	<!-- END JAVASCRIPTS -->
+</body>
+<!-- END BODY -->
+</html>
