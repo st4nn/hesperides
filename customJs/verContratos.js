@@ -84,7 +84,7 @@ function btnVerContratos_Buscar_Click()
                   tds += '       </div>';
                   tds += '   </div>';
                   tds += '   <div class="form-actions">';
-                  tds += '     <button id="objArchivos" class="btn btn-warning"><i class="icon-copy icon-white"></i> Archivos</button>';
+                  tds += '     <button  class="btn btn-warning objArchivos"><i class="icon-copy icon-white"></i> Archivos</button>';
                   tds += '     <button class="btn btn-info"><i class="icon-search icon-white"></i> Detalles</button>';
                   tds += '     <button class="btn btn-primary"><i class="icon-legal icon-white"></i> Pruebas</button>';
                   tds += '   </div>';

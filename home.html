@@ -32,9 +32,7 @@
    <div id="container" class="row-fluid">
       <!-- BEGIN SIDEBAR -->
       <div id="sidebar" class="nav-collapse collapse">
-
          <div class="sidebar-toggler hidden-phone"></div>   
-
          <!-- BEGIN RESPONSIVE QUICK SEARCH FORM -->
          <div class="navbar-inverse">
             <form class="navbar-search visible-phone">
@@ -52,24 +50,7 @@
          <!-- BEGIN PAGE CONTAINER-->
          <div class="container-fluid">
             <!-- BEGIN PAGE CONTENT-->
-            <div id='contenedorModulos' class="row-fluid">
-              <!--
-               <div class="">
-                  <div class="widget">
-                        <div id='tituloDelModulo' class="widget-title">
-                           <h4><i class="icon-globe"></i><span>Titulo del Modulo</span></h4>
-                           <span class="tools">
-                           <a href="javascript:;" class="icon-chevron-down"></a>
-                           <a class="icon-remove" href="javascript:;"></a>
-                           </span>                    
-                        </div>
-                        <div id='modulo' class="widget-body">
-                            Cuerpo del Modulo
-                        </div>
-                  </div>
-               </div>
-             -->
-            </div>
+            <div id='contenedorModulos' class="row-fluid"></div>
             <!-- END PAGE CONTENT-->         
          </div>
          <!-- END PAGE CONTAINER-->
@@ -100,11 +81,16 @@
 
    <script src="js/scripts.js"></script>
 
+   <script type="text/javascript" src="assets/data-tables/jquery.dataTables.js"></script>
+   <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
+
    <script type="text/javascript" src="customJs/home.js"></script>
    <script type="text/javascript" src="customJs/controlarSesion.js"></script>
    <script src="customJs/verContratos.js"></script>
    <script src="customJs/crearContrato.js"></script>
    <script src="customJs/crearEmpresa.js"></script>
+   <script src="customJs/verEmpresas.js"></script>
+   <script src="customJs/verUsuarios.js"></script>
    <script>
       jQuery(document).ready(function() 
       {       

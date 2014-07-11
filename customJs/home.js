@@ -225,31 +225,6 @@ function verCorreo()
 {
   $("#txtIdMensaje").val($(this).attr('idMensaje'));
 }
-$.fn.cargarUsuarios = function(options, callback)
-      {
-        var defaults =
-        {
-          idUsuario : "0"
-        }
-        var options = $.extend(defaults, options);
-        if (callback === undefined)
-        {callback = function(){};}
-
-      /*plugin*/
-      
-        $.post("php/cargarUsuarios.php", 
-          {},
-          function(data, textStatus, xhr)
-          {
-            callback(data);
-          },"json");
-      /*plugin*/
-
-      //Averigua si el parámetro contiene una función de ser así llamarla
-        if($.isFunction(options.onComplete)) 
-        {options.onComplete.call();}
-      };
-
 function Mensaje(Titulo, Mensaje)
 {
   $.gritter.add({
@@ -323,6 +298,18 @@ function minimizarPorlet(id)
                 el.slideUp(200);
             }
         });
+  $("#" + id + " .widget-title").on("dblclick", function(event) 
+  {
+      var el = $("#" + id + " .widget-body");
+            var objTitulo = $("#" + id + " .btnMinimizar");
+            if (jQuery(objTitulo).hasClass("icon-chevron-down")) {
+                jQuery(objTitulo).removeClass("icon-chevron-down").addClass("icon-chevron-up");
+                el.slideDown(200);
+            } else {
+                jQuery(objTitulo).removeClass("icon-chevron-up").addClass("icon-chevron-down");
+                el.slideUp(200);
+            }
+  });
 }
 function cerrarPorlet(id)
 {
