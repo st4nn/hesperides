@@ -19,7 +19,7 @@
 
    if ($fila['Cantidad'] > 0)
    {
-      echo "El registro ya existe";
+      echo "El contrato ya existe";
    } else
    {
       $sql = "INSERT INTO Contratos (

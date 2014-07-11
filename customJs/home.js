@@ -304,6 +304,10 @@ function cargarModulo(pagina, titulo, icono)
           cerrarPorlet(titulo);
       });
   }
+  if (pagina == "Inicio")
+  {
+    cargarInicio();
+  }
 }
 function minimizarPorlet(id)
 {
@@ -326,4 +330,29 @@ function cerrarPorlet(id)
     {
         jQuery('#' + id).hide('slide');
     });
+}
+function cargarInicio()
+{
+  $.post('php/cargarEstadisticas_Inicio.php', function(data, textStatus, xhr) 
+            {
+                $("#txtEstadisticas").slideDown();
+                $("#txtThick_Usuarios").val(data.usuarios);
+                $("#txtThick_Empresas").val(data.empresas);
+                $("#txtThick_Pruebas").val(data.pruebas);
+                $("#txtThick_Contratos").val(data.contratos);
+
+                $("#txtNum_Usuarios").text("+" + data.usuarios);
+                $("#txtNum_Empresas").text("+" + data.empresas);
+                $("#txtNum_Pruebas").text("+" + data.pruebas);
+                $("#txtNum_Contratos").text("+" + data.contratos);
+
+                $(".knob").knob();
+            }, 'json').always(function() 
+              {
+                //Cuando Finaliza
+              }).fail(function() {
+                Mensaje("Error", "No hay conexión con el servidor");
+                $("#txtEstadisticas").slideUp();
+                $("#txtError").slideDown();
+              });
 }
