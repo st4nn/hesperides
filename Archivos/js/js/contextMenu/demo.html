@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="../HTML5/jquery.js" type="text/javascript"></script>
+    <!--<script src="src/jquery.ui.position.js" type="text/javascript"></script>-->
+    <script src="jquery.contextMenu.js" type="text/javascript"></script>
+    <!--<script src="screen.js" type="text/javascript"></script>-->
+    <!--<script src="prettify/prettify.js" type="text/javascript"></script>-->
+    
+    <link href="jquery.contextMenu.css" rel="stylesheet" type="text/css" />
+    <!--<link href="screen.css" rel="stylesheet" type="text/css" />-->
+    <!--<link href="prettify/prettify.sunburst.css" rel="stylesheet" type="text/css" />-->
+<!--
+    <script type="text/javascript">
+
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-8922143-3']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+    </script>
+-->
+</head>
+<body>
+    
+<div class="context-menu-h">
+    <strong>right click me</strong>
+</div>
+
+    <script type="text/javascript" class="showcase">
+
+var Obj = {
+                "editar": {"name": "Editar"}, 
+                "copy": {"name": "Copiar"},
+                "paste": {"name": "Pegar"},
+                "delete": {"name": "Pr"}, 
+                "sep1": "---------",
+                "quit": {"name": "Salir"}
+            };
+//"cut": {"name": "Cortar", icon: "cut"},
+$(function(){
+    $.contextMenu({
+        selector: '.context-menu-h', 
+        callback: function(key, options) {
+            var m = "clicked: " + key;
+            window.console && console.log(m) || alert(m); 
+        },
+        items: Obj
+    });
+    
+    $('.context-menu-h').on('click', function(e){
+        console.log('clicked', this);
+    })
+});
+    </script>
+
+</body>
+</html>

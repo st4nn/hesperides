@@ -1,4 +1,5 @@
 var Usuario = null;
+
 $(document).on("ready", appReady);
 
 function appReady()
@@ -6,14 +7,13 @@ function appReady()
   Usuario = JSON.parse(localStorage.getItem('hesPu'));  
   cagarBarraSuperior(Usuario);
 
-  $("#sideMenu li").live("click", sideMenu);
-
   $("#btnEnviarCorreo").live('click', btnEnviarCorreo_Click);
 
   $("#tablaMensajes tr").live('click', verCorreo);
 
-  $("#modulo").load("Inicio.html");
-  $("#tituloDelModulo h4 span").text("Inicio");
+  //$("#modulo").load("Inicio.html");
+  cargarModulo("Inicio", "Inicio", "icon-dashboard");
+  //$("#tituloDelModulo h4 span").text("Inicio");
 }
 
 function cagarBarraSuperior(pUsuario)
@@ -26,6 +26,7 @@ function cagarBarraSuperior(pUsuario)
   $("#sideMenu").load("menu.html", function()
     {
       App.init();
+      $("#sideMenu li").on("click", sideMenu);
     });
 
   hacerPush();
@@ -87,11 +88,8 @@ function sideMenu(event)
 {
   if (!($(this).hasClass('has-sub')))
   {
-    $("#modulo").load($(this).attr("pagina") + ".html");
-
-    $("#tituloDelModulo h4 span").text($(this).text());
-    $("#tituloDelModulo h4 i").removeClass('*');
-    $("#tituloDelModulo h4 i").addClass($(this).attr("icono"));
+    cargarModulo($(this).attr("pagina"), $(this).text(), $(this).attr("icono"));
+    
   }  
 }
 function hacerPush (argument) 
@@ -258,4 +256,74 @@ function Mensaje(Titulo, Mensaje)
         title: Titulo,
         text: Mensaje
       });
+}
+function cargarModulo(pagina, titulo, icono)
+{
+  var texto = titulo;
+  titulo = "modulo_" + titulo.replace(" ", "_");
+  titulo = titulo.replace(".", "_");
+  var tds = "";
+  $(".widget-body").slideUp();
+  $(".icon-chevron-up").removeClass("icon-chevron-up").addClass("icon-chevron-down");
+
+  if ($('#' + titulo).length)
+  {
+     $('#' + titulo).show('slide');
+     $("#" + titulo + " .widget-body").slideDown();
+     $("#" + titulo + " .icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
+  } else
+  {
+    tds +='<div id="' + titulo + '" class="">';
+    tds +='  <div class="widget">';
+    tds +='        <div class="widget-title">';
+    tds +='           <h4><i class="' + icono + '"></i><span>Cargando...</span></h4>';
+    tds +='           <span class="tools">';
+    tds +='           <a href="javascript:;" class="icon-chevron-up btnMinimizar"></a>';
+    tds +='           <a class="icon-remove btnCerrar" href="javascript:;"></a>';
+    tds +='           </span>';
+    tds +='        </div>';
+    tds +='        <div class="widget-body">';
+    tds +='        </div>';
+    tds +='  </div>';
+    tds +='</div>';
+    
+    $("#contenedorModulos").append(tds);  
+    $.post("cargarFrame.php", {archivo: pagina + ".html"}, 
+      function(data)
+      {
+        $("#" + titulo + " .widget-body").html(data);  
+        //$("#" + titulo + " .widget-body").html("<h1>Listo</h1>");
+      }, "html").always(function()
+      {
+          $("#" + titulo + " .widget-title h4 span").text(texto);
+          /*$("#" + titulo + " .widget-title h4 i").removeClass('*');
+          $("#" + titulo + " .widget-title h4 i").addClass(icono);        
+          */
+
+          minimizarPorlet(titulo);
+          cerrarPorlet(titulo);
+      });
+  }
+}
+function minimizarPorlet(id)
+{
+  //jQuery('#' + id + ' .widget .tools .icon-chevron-down, #' + id + '.widget .tools .icon-chevron-up').on("click", function () {
+  jQuery('#' + id + ' .btnMinimizar').on("click", function () {
+            var el = $("#" + id + " .widget-body");
+            var objTitulo = $("#" + id + " .btnMinimizar");
+            if (jQuery(objTitulo).hasClass("icon-chevron-down")) {
+                jQuery(objTitulo).removeClass("icon-chevron-down").addClass("icon-chevron-up");
+                el.slideDown(200);
+            } else {
+                jQuery(objTitulo).removeClass("icon-chevron-up").addClass("icon-chevron-down");
+                el.slideUp(200);
+            }
+        });
+}
+function cerrarPorlet(id)
+{
+  jQuery('#' + id + ' .btnCerrar').on("click", function () 
+    {
+        jQuery('#' + id).hide('slide');
+    });
 }

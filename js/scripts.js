@@ -480,9 +480,11 @@ var App = function () {
     }
 
     var handleWidgetTools = function () {
+        /*
         jQuery('.widget .tools .icon-remove').click(function () {
             jQuery(this).parents(".widget").parent().remove();
         });
+*/
 
         jQuery('.widget .tools .icon-refresh').click(function () {
             var el = jQuery(this).parents(".widget");
@@ -491,7 +493,7 @@ var App = function () {
                 App.unblockUI(el);
             }, 1000);
         });
-
+        /*
         jQuery('.widget .tools .icon-chevron-down, .widget .tools .icon-chevron-up').click(function () {
             var el = jQuery(this).parents(".widget").children(".widget-body");
             if (jQuery(this).hasClass("icon-chevron-down")) {
@@ -502,6 +504,7 @@ var App = function () {
                 el.slideDown(200);
             }
         });
+*/
     }
 
     var handleDashboardCharts = function () {
@@ -1304,6 +1307,7 @@ var App = function () {
     var handleStyler = function () {
         var scrollHeight = '25px';
 
+        /*
         jQuery('#theme-change').click(function () {
             if ($(this).attr("opened") && !$(this).attr("opening") && !$(this).attr("closing")) {
                 $(this).removeAttr("opened");
@@ -1334,6 +1338,7 @@ var App = function () {
                 $("#theme-change .settings").show();
             }
         });
+*/
 
         jQuery('#theme-change .colors span').click(function () {
             var color = $(this).attr("data-style");

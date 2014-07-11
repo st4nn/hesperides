@@ -1775,8 +1775,8 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 
 /* style switcher */
 #theme-change {
-    position: fixed;
-    width: 20px;
+    /*position: fixed;
+    width: 20px;*/
     height: 22px;
     overflow: hidden;
     top:70px;
