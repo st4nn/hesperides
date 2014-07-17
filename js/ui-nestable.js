@@ -14,7 +14,7 @@ var UINestable = function () {
     return {
         //main function to initiate the module
         init: function () {
-
+/*
             // activate Nestable for list 1
             $('#nestable_list_1').nestable({
                 group: 1
@@ -41,7 +41,7 @@ var UINestable = function () {
                     $('.dd').nestable('collapseAll');
                 }
             });
-
+*/
             $('#nestable_list_3').nestable();
 
         }

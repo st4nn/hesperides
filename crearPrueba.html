@@ -8,22 +8,22 @@
       <!-- BEGIN PAGE -->  
             <!-- BEGIN PAGE CONTENT-->
             <div class="row-fluid">
-              <form action="#" class="form-horizontal">
+              <form action="#" class="form-horizontal" id='frmCrearPrueba'>
                 <div class="control-group">
                     <label class="control-label">Nombre</label>
                     <div class="controls">
-                        <input type="text" placeholder="Nombre de la Prueba" class="input-large" />
+                        <input type="text" placeholder="Nombre de la Prueba" class="input-large" id='txtPrueba_Nombre' required />
                     </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Descripción</label>
                     <div class="controls">
-                        <textarea class="input-xxlarge" placeholder='Descripción de la Prueba' rows="3"></textarea>
+                        <textarea class="input-xxlarge" placeholder='Descripción de la Prueba' rows="3" id='txtPrueba_Descripcion'></textarea>
                     </div>
                 </div>
                   <div class="form-actions">
-                      <button type="submit" class="btn blue"><i class="icon-ok"></i> Guardar</button>
-                      <button type="button" class="btn"><i class=" icon-remove"></i> Cancelar</button>
+                      <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Guardar</button>
+                      <button type="reset" class="btn btn-danger"><i class="icon-remove"></i> Borrar</button>
                   </div>
               </form>
             </div>
@@ -32,7 +32,7 @@
     <script>
       jQuery(document).ready(function() {       
          // initiate layout and plugins
-         
+         crearContrato();
       });
    </script>
    <!-- END JAVASCRIPTS -->   
