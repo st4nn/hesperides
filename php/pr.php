@@ -1,10 +1,10 @@
 <?php
 	include("conectar.php"); 
+	include("datosUsuario.php"); 
    $link = Conectar();
 
-   $obj = ["valor 1", "valor 2", "valor 3"];
+   $Usuario = datosUsuario(1);
    
-   
-       echo array_values($obj);
+   echo $Usuario->idPerfil;
    
 ?>

@@ -1,0 +1,39 @@
+<!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+              <form id="frmCrearPerfil" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label">Nombre</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Nombre del Perfil" class="input-large" id="txtCrearPerfil_Nombre" required />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Descripción</label>
+                    <div class="controls">
+                        <textarea class="input-xxlarge" placeholder='Texto descriptivo del Perfil' rows="3" id="txtCrearPerfil_Descripcion" required></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                  <input type="text" placeholder="Funciones" class="input-large" id="txtCrearPerfil_Funciones" />
+                    <label class="control-label">Funciones:</label>
+                    <div class="controls" id='grpCrearPerfil_Funciones'></div>
+                </div>
+                  <div class="form-actions">
+                      <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Guardar</button>
+                      <button type="reset" class="btn btn-danger"><i class="icon-remove"></i> Borrar</button>
+                  </div>
+              </form>
+            </div>
+
+            <!-- END PAGE CONTENT-->         
+   <!-- BEGIN JAVASCRIPTS -->    
+   <script>
+      jQuery(document).ready(function() {       
+         // initiate layout and plugins
+         crearPerfil();
+      });
+   </script>
+   <!-- END JAVASCRIPTS -->   
+</body>
+<!-- END BODY -->
+</html>
