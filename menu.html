@@ -1,4 +1,3 @@
- 
 <li id='mnuInicio' pagina='Inicio' icono='icon-dashboard'><a href="javascript:;" class=""><span class="icon-box"><i class="icon-dashboard"></i></span>Inicio</a></li>
 <li id='mnuContratos' class="has-sub">
     <a href="javascript:;" class="">
@@ -54,3 +53,19 @@
 </li>
 <li id='mnuDiligenciarPruebas' pagina='404' icono='icon-edit'><a href="javascript:;" class=""><span class="icon-box"><i class="icon-edit"></i></span>Diligenciar Prueba</a></li>
 <li id='mnuPruebas' pagina='firma' icono='icon-edit'><a href="javascript:;" class=""><span class="icon-box"><i class="icon-edit"></i></span>Firma</a></li>
+<script type="text/javascript">
+    jQuery(document).ready(function() 
+    {
+        $.post("php/privilegios.php", {usuario : Usuario.id}, 
+            function(data) {
+                $.each(data, function(index, value)
+                    {
+                        $("#" + value.idFuncion).remove();        
+                    });
+                
+            }, "json").fail(function() {
+                $("#sideMenu li").remove();
+                Mensaje("Error", "No fue posible cargar las Funciones, por favor actuliza la página.");
+            });
+    });
+</script>
