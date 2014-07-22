@@ -1,7 +1,7 @@
 function verContratos()
 {       
          // initiate layout and plugins
-         $(".chosen").chosen();
+         $("#frmVerContratos .chosen").chosen();
          $('.tooltips').tooltip();
 
          $(".objArchivos").on("click", verArchivos);

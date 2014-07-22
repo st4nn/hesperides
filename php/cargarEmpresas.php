@@ -2,6 +2,10 @@
 	include("conectar.php"); 
    $link = Conectar();
 
+   $idUsuario = addslashes($_POST['usuario']);
+   include("datosUsuario.php"); 
+   $Usuario = datosUsuario($idUsuario);
+
 
    $sql = "SELECT * FROM Empresas";
    $result = $link->query($sql);

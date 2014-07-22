@@ -1,4 +1,4 @@
-function crearContrato()
+function crearPrueba()
 {
           $("#frmCrearPrueba").on("submit", function(evento)
             {

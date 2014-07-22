@@ -1,10 +1,10 @@
             <!-- BEGIN PAGE CONTENT-->
-              <form class="form-horizontal">
+              <form id="frmCrearUsuario" class="form-horizontal">
                 <div class="control-group">
                     <label class="control-label">Nombre:</label>
                     <div class="controls">
                        <div class="input-prepend">
-                          <span class="add-on  icon-credit-card"></span><input class="input-xxlarge" type="text" placeholder="Nombre" required />
+                          <span class="add-on  icon-credit-card"></span><input class="input-xxlarge" type="text" placeholder="Nombre" required id="txtCrearUsuario_Nombre" />
                        </div>
                     </div>
                  </div>
@@ -12,27 +12,21 @@
                     <label class="control-label">Correo</label>
                     <div class="controls">
                        <div class="input-prepend">
-                          <span class="add-on  icon-envelope-alt"></span><input class="input-xlarge" type="email" placeholder="Correo de Contacto" required />
+                          <span class="add-on  icon-envelope-alt"></span><input class="input-xlarge" type="email" placeholder="Correo de Contacto" required id="txtCrearUsuario_Correo" />
                        </div>
                     </div>
                  </div>
                 <div class="control-group">
                   <label class="control-label">Perfil:</label>
                   <div class="controls">
-                     <select class="span6 chosen" data-placeholder="Seleccione el Perfil" tabindex="1">
-                        <option value=""></option>
-                        <option value="Category 1">Category 1</option>
-                        <option value="Category 2">Category 2</option>
-                        <option value="Category 3">Category 5</option>
-                        <option value="Category 4">Category 4</option>
-                     </select>
+                     <select class="span6 chosen" data-placeholder="Seleccione el Perfil" tabindex="1" id="txtCrearUsuario_Perfil"></select>
                   </div>
                 </div>
                 <div class="control-group">
                     <label class="control-label">Nombre de Usuario:</label>
                     <div class="controls">
                        <div class="input-prepend">
-                          <span class="add-on  icon-user"></span><input class="input-xlarge" type="text" placeholder="Nombre de Usuario" required />
+                          <span class="add-on  icon-user"></span><input class="input-xlarge" type="text" placeholder="Nombre de Usuario" required id="txtCrearUsuario_Usuario" />
                        </div>
                     </div>
                  </div>
@@ -40,7 +34,7 @@
                     <label class="control-label">Clave:</label>
                     <div class="controls">
                        <div class="input-prepend">
-                          <span class="add-on  icon-asterisk"></span><input class="input-xlarge" type="password" placeholder="Clave de Acceso" required />
+                          <span class="add-on  icon-asterisk"></span><input class="input-xlarge" type="password" placeholder="Clave de Acceso" required id="txtCrearUsuario_Clave" />
                        </div>
                     </div>
                  </div>
@@ -48,20 +42,14 @@
                     <label class="control-label">Nuevamente Clave:</label>
                     <div class="controls">
                        <div class="input-prepend">
-                          <span class="add-on  icon-asterisk"></span><input class="input-xlarge" type="password" placeholder="Nuevamente Clave de Acceso" required />
+                          <span class="add-on  icon-asterisk"></span><input class="input-xlarge" type="password" placeholder="Nuevamente Clave de Acceso" required id="txtCrearUsuario_Clave2" />
                        </div>
                     </div>
                  </div>
                  <div class="control-group">
                   <label class="control-label">Empresa:</label>
                   <div class="controls">
-                     <select class="span6 chosen" data-placeholder="Seleccione la Empresa" tabindex="1">
-                        <option value=""></option>
-                        <option value="Category 1">Category 1</option>
-                        <option value="Category 2">Category 2</option>
-                        <option value="Category 3">Category 5</option>
-                        <option value="Category 4">Category 4</option>
-                     </select>
+                     <select class="span6 chosen" data-placeholder="Seleccione la Empresa" tabindex="1" id="txtCrearUsuario_Empresa"></select>
                   </div>
                 </div>
                  </div>
@@ -76,7 +64,7 @@
    <script>
       jQuery(document).ready(function() {       
          // initiate layout and plugins
-         
+         crearUsuario();
       });
    </script>
    <!-- END JAVASCRIPTS -->   

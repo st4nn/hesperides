@@ -333,9 +333,9 @@ function cargarInicio()
                 $("#txtNum_Pruebas").text("+" + data.pruebas);
                 $("#txtNum_Contratos").text("+" + data.contratos);
 
-                $(".knob").knob();
             }, 'json').always(function() 
               {
+                $(".knob").knob();
                 //Cuando Finaliza
               }).fail(function() {
                 Mensaje("Error", "No hay conexión con el servidor");

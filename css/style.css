@@ -248,9 +248,9 @@ a,a:focus, a:hover, a:active {
 #header .brand {
     background:#333333;
     margin-top: 0px !important;
-    opacity:0.6;
-    filter:alpha(opacity=60);
-    padding: 9.5px 36px;
+    padding: 1px 36px;
+    height: 60px;
+
     width: 142px;
 }
 
@@ -837,7 +837,7 @@ form legend {
     /*background-image: -linear-gradient(top, #ffffff 0%, #f2f2f2 100%);*/
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
     height: 36px;
-    border-bottom: 1px solid #fff;
+    border-bottom: 3px solid #7ac041;
 }
 
 .widget-title > h4 {
@@ -1866,6 +1866,12 @@ textarea:focus, input[type="text"]:focus, input[type="password"]:focus, input[ty
 }
 #theme-change .colors .color-navy-blue {
     background-color: #263849;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+}
+#theme-change .colors .color-eec {
+    background-color: #fdb930;
     -webkit-border-radius: 15px;
     -moz-border-radius: 15px;
     border-radius: 15px;
@@ -3846,4 +3852,11 @@ jQuery UI Datepicker(new in v1.2.2)
 #top_menu i
 {
     margin: 0 10px
+}
+#grpCrearPerfil_Funciones { 
+  columns: 2;
+  -moz-columns: 2;
+  -webkit-columns: 2;
+
+  text-align: justify;
 }

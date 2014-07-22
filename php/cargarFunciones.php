@@ -4,7 +4,7 @@
    $idUsuario = addslashes($_POST['usuario']);
 
    include("datosUsuario.php"); 
-   $Usuario = $Usuario = datosUsuario($idUsuario);
+   $Usuario = datosUsuario($idUsuario);
 
    $link = Conectar();
 

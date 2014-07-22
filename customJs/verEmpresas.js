@@ -37,8 +37,7 @@ $.fn.cargarEmpresas = function(options, callback)
 
       /*plugin*/
       
-        $.post("php/cargarEmpresas.php", 
-          {},
+        $.post("php/cargarEmpresas.php", {usuario : Usuario.id},
           function(data, textStatus, xhr)
           {
             callback(data);
