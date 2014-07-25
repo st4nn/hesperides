@@ -24,7 +24,7 @@
                      '$nombre', 
                      '$descripcion');";
 
-      $link->query($sql);
+      $link->query(utf8_decode($sql));
          if ( $link->affected_rows > 0)
          {
             $nuevoId = $link->insert_id;
@@ -47,7 +47,7 @@
                if ($idx > 0)
                {
                   $sql = "INSERT INTO Perfiles_has_Funciones (idPerfil, idFuncion) VALUES $sql;";
-                  $link->query($sql);
+                  $link->query(utf8_decode($sql));
                }
             
             echo 1;

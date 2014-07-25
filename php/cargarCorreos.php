@@ -23,7 +23,7 @@
    }
 
    $sql = "SELECT * FROM Correos WHERE $tipo $estado ORDER BY Fecha DESC";
-   $result = $link->query($sql);
+   $result = $link->query(utf8_decode($sql));
 
    if ( $result->num_rows > 0)
    {

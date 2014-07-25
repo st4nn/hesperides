@@ -48,7 +48,7 @@
                               '$nombre', 
                               '$correo',
                               '$perfil');";
-                     $link->query($sql);
+                     $link->query(utf8_decode($sql));
                      echo $link->affected_rows;   
                } else
                {

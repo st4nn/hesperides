@@ -30,7 +30,7 @@
                      '$archivos', 
                      '$observaciones');";
 
-      $link->query($sql);
+      $link->query(utf8_decode($sql));
          if ( $link->affected_rows > 0)
          {
             $nuevoId = $link->insert_id;
@@ -55,7 +55,7 @@
                if ($idx > 0)
                {
                   $sql = "INSERT INTO RespuestaMultiple (Nombre, idItem) VALUES $sql;";
-                  $link->query($sql);
+                  $link->query(utf8_decode($sql));
                }
             }
 

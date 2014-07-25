@@ -1,6 +1,6 @@
 function crearActividad()
 {
-  $('.text-toggle-button').toggleButtons({
+  $('#frmCrearActividad .text-toggle-button').toggleButtons({
             width: 200,
             label: {
                 enabled: "Si",

@@ -2013,8 +2013,19 @@ var App = function () {
             'nextSelector': '.button-next',
             'previousSelector': '.button-previous',
             onTabClick: function (tab, navigation, index) {
-                alert('on tab click disabled');
-                return false;
+                var total = navigation.find('li').length;
+                var current = index + 1;
+                // set wizard title
+                $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
+                // set done steps
+                /*jQuery('li', $('#form_wizard_1')).removeClass("done");
+                var li_list = navigation.find('li');
+                alert(index);
+                for (var i = 0; i < index; i++) {
+                    jQuery(li_list[i]).addClass("done");
+                }*/
+
+                App.scrollTo($('.page-title'));
             },
             onNext: function (tab, navigation, index) {
                 var total = navigation.find('li').length;
@@ -2022,11 +2033,11 @@ var App = function () {
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
                 // set done steps
-                jQuery('li', $('#form_wizard_1')).removeClass("done");
+                /*jQuery('li', $('#form_wizard_1')).removeClass("done");
                 var li_list = navigation.find('li');
                 for (var i = 0; i < index; i++) {
                     jQuery(li_list[i]).addClass("done");
-                }
+                }*/
 
                 if (current == 1) {
                     $('#form_wizard_1').find('.button-previous').hide();
@@ -2049,11 +2060,12 @@ var App = function () {
                 // set wizard title
                 $('.step-title', $('#form_wizard_1')).text('Step ' + (index + 1) + ' of ' + total);
                 // set done steps
-                jQuery('li', $('#form_wizard_1')).removeClass("done");
+                /*jQuery('li', $('#form_wizard_1')).removeClass("done");
                 var li_list = navigation.find('li');
                 for (var i = 0; i < index; i++) {
                     jQuery(li_list[i]).addClass("done");
-                }
+                }*/
+
 
                 if (current == 1) {
                     $('#form_wizard_1').find('.button-previous').hide();
@@ -2073,8 +2085,12 @@ var App = function () {
             },
             onTabShow: function (tab, navigation, index) {
                 var total = navigation.find('li').length;
-                var current = index + 1;
+                //var current = index + 1;
+                var li_list = navigation.find('li');
+                jQuery(li_list[index]).addClass("done");
+                var current = $(".done").length;
                 var $percent = (current / total) * 100;
+                
                 $('#form_wizard_1').find('.bar').css({
                     width: $percent + '%'
                 });

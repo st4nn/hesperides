@@ -38,7 +38,7 @@
             Contratista 
          FROM Contratos WHERE $condicion";
 
-   $result = $link->query($sql);
+   $result = $link->query(utf8_decode($sql));
 
    if ( $result->num_rows > 0)
    {

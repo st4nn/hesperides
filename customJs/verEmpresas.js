@@ -17,7 +17,7 @@ function verEmpresas()
                   tds += '<td class="hidden-phone">';
                   //tds += '   <div class="form-actions">';
                   tds += '     <button class="btn btn-primary"><i class="icon-copy icon-white"></i> Contratos</button>';
-                  tds += '     <button class="btn btn-info"><i class="icon-group icon-white"></i> Usuarios</button>';
+                  //tds += '     <button class="btn btn-info"><i class="icon-group icon-white"></i> Usuarios</button>';
                   //tds += '   </div></td>';
               tds += '</td></tr>';
             });

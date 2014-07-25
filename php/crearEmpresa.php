@@ -29,7 +29,7 @@
                      '$telefono', 
                      '$correo');";
 
-      $link->query($sql);
+      $link->query(utf8_decode($sql));
          if ( $link->affected_rows > 0)
          {
             echo 1;

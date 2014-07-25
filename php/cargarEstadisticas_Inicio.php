@@ -21,7 +21,7 @@
 
         $result = $link->query($sql);
         $row = $result->fetch_assoc();
-
+        
          $Data->usuarios = $row['Cantidad'];
 
          $sql = "SELECT 

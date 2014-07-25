@@ -25,6 +25,9 @@
     <link rel="stylesheet" type="text/css" href="assets/jquery-tags-input/jquery.tagsinput.css" />
     <link rel="stylesheet" href="assets/bootstrap-toggle-buttons/static/stylesheets/bootstrap-toggle-buttons.css" />
     <link rel="stylesheet" type="text/css" href="assets/nestable/jquery.nestable.css" />
+
+   <!--Borrar Esta Linea-->
+    <link rel="stylesheet" href="subir/js/jquery.plupload.queue/css/jquery.plupload.queue.css" type="text/css" media="screen" />
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
@@ -63,7 +66,11 @@
       <!-- END PAGE -->  
    </div>
    <!-- END CONTAINER -->
-   
+   <div id="footer">
+      <div class="span pull-right">
+         <span class="go-top"><i class="icon-arrow-up"></i></span>
+      </div>
+   </div>
    <!-- BEGIN JAVASCRIPTS -->    
    <!-- Load javascripts at bottom, this will reduce page load time -->
    <script src="js/jquery-1.8.3.min.js"></script>
@@ -89,6 +96,7 @@
    <script type="text/javascript" src="assets/data-tables/jquery.dataTables.js"></script>
    <script type="text/javascript" src="assets/data-tables/DT_bootstrap.js"></script>
    <script type="text/javascript" src="assets/bootstrap-toggle-buttons/static/js/jquery.toggle.buttons.js"></script>
+   <script src="assets/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 
    <script type="text/javascript" src="customJs/controlarSesion.js"></script>
    <script type="text/javascript" src="customJs/home.js"></script>
@@ -100,8 +108,14 @@
    <script src="customJs/crearPerfil.js"></script>
    <script src="customJs/verEmpresas.js"></script>
    <script src="customJs/verUsuarios.js"></script>
-   <script src="customJs/CrearUsuario.js"></script>
+   <script src="customJs/crearUsuario.js"></script>
    <script src="customJs/verPruebas.js"></script>
+   <script src="customJs/ipal.js"></script>
+
+   <!--Borrar Esto-->
+   <script type="text/javascript" src="subir/js/plupload.full.min.js"></script>
+   <script type="text/javascript" src="subir/js/jquery.plupload.queue/jquery.plupload.queue.js"></script>
+   <!-- hasta aqui-->
    <script>
       jQuery(document).ready(function() 
       {       

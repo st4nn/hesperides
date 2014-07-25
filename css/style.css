@@ -3860,3 +3860,14 @@ jQuery UI Datepicker(new in v1.2.2)
 
   text-align: justify;
 }
+#form_wizard_1 iframe
+{
+    height: 320px;
+    margin: 2em;
+    width: 40%;
+    border: none;
+}
+#ContenedorIframes
+{
+    width: 100%;
+}

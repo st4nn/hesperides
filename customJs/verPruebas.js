@@ -11,7 +11,7 @@ function verPruebas()
                   tds += '<td>' + Prueba.idPrueba + '</td>'
                   tds += '<td>' + Prueba.Nombre + '</td>'
                   tds += '<td>' + Prueba.Descripcion + '</td>'
-                  tds += '<td class="hidden-phone">';
+                  tds += '<td class="hidden-phone"><button class="btn btn-primary btnVerPruebas"><i class="icon-legal icon-white"></i> Actividades</button>';
               tds += '</td></tr>';
             });
             $("#tblPruebas tbody").append(tds);

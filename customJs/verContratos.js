@@ -4,7 +4,7 @@ function verContratos()
          $("#frmVerContratos .chosen").chosen();
          $('.tooltips').tooltip();
 
-         $(".objArchivos").on("click", verArchivos);
+         $(".objArchivos").live("click", verArchivos);
 
          $("#txtVerContratos_BuscarPor").chosen().change(txtVerContratos_BuscarPor_Click);
 
@@ -14,7 +14,7 @@ function verContratos()
 
 function verArchivos()
 {
-	popupWin = window.open("Informe/index.html", 'open_window');
+	popupWin = window.open("Archivos/index.html", 'open_window');
 }
 function cerrarPorlet_()
  {
@@ -86,7 +86,7 @@ function btnVerContratos_Buscar_Click()
                   tds += '   <div class="form-actions">';
                   tds += '     <button  class="btn btn-warning objArchivos"><i class="icon-copy icon-white"></i> Archivos</button>';
                   tds += '     <button class="btn btn-info"><i class="icon-search icon-white"></i> Detalles</button>';
-                  tds += '     <button class="btn btn-primary"><i class="icon-legal icon-white"></i> Pruebas</button>';
+                  //tds += '     <button class="btn btn-primary"><i class="icon-legal icon-white"></i> Pruebas</button>';
                   tds += '   </div>';
                   tds += '</div>';
                   tds += '</div>';
