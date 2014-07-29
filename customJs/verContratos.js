@@ -120,13 +120,15 @@ function btnVerContratos_Buscar_Click()
 function editarContrato_()
 {
   var Contrato = $(this).parent("div").parent("div").find("h4");
-   cargarModulo("editarContrato", "Editar " + $(Contrato).text() ,"icon-edit");
-   var pIdContrato = $(Contrato).attr("idContrato");
-   cargarDatosContrato(pIdContrato);
+  var pIdContrato = $(Contrato).attr("idContrato");
+   cargarModulo({pagina : "editarContrato", titulo : "Editar " + $(Contrato).text() ,icono : "icon-edit"}, function()
+    {
+      cargarDatosContrato(pIdContrato)
+    });
+   
 }
 function iniciarFinder(idContrato)
 {
-  console.log($('#verContratos_Archivos').length);
   if($('#verContratos_Archivos').elfinder('instance'))
     { $('#verContratos_Archivos').elfinder('destroy');}
               
