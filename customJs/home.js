@@ -12,7 +12,7 @@ function appReady()
   $("#tablaMensajes tr").live('click', verCorreo);
 
   //$("#modulo").load("Inicio.html");
-  cargarModulo({pagina : "Inicio", titulo : "Inicio", icono : "icon-dashboard"});
+  $(this).cargarModulo({pagina : "Inicio", titulo : "Inicio", icono : "icon-dashboard"}, cargarInicio);
   //$("#tituloDelModulo h4 span").text("Inicio");
 }
 
@@ -88,7 +88,7 @@ function sideMenu(event)
 {
   if (!($(this).hasClass('has-sub')))
   {
-    cargarModulo({pagina : $(this).attr("pagina"), titulo : $(this).text(), icono : $(this).attr("icono")});
+    $(this).cargarModulo({pagina : $(this).attr("pagina"), titulo : $(this).text(), icono : $(this).attr("icono")});
     
   }  
 }
@@ -232,14 +232,14 @@ function Mensaje(Titulo, Mensaje)
         text: Mensaje
       });
 }
-var cargarModulo = function(options, callback)
+$.fn.cargarModulo = function(options, callback)
 {
   var defaults =
   {
     pagina : "404",
     titulo : "Funcion no Encontrada",
     icono : "icon-ban-circle"
-  }
+  };
   var options = $.extend(defaults, options);
   if (callback === undefined)
   {callback = function(){};}
@@ -259,6 +259,7 @@ var cargarModulo = function(options, callback)
      $("#" + nomModulo + " .widget-body").slideDown();
      $("#" + nomModulo + " .icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
      $("#" + nomModulo + " .widget-title h4 span").text(options.titulo);
+     callback();
   } else
   {
     tds +='<div id="' + nomModulo + '" class="">';
@@ -295,19 +296,10 @@ var cargarModulo = function(options, callback)
 
           minimizarPorlet(nomModulo);
           cerrarPorlet(nomModulo);
+          callback();
 
-          if (callback === undefined)
-                {callback = function(){};}
-
-            callback();
-
-          if (options.pagina == "Inicio")
-          {
-            cargarInicio();
-          }
       });
   }
-
 
 /*plugin*/
 

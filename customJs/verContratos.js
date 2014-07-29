@@ -19,7 +19,7 @@ function verArchivos()
     var idContrato = $(this).attr("idContrato");
 
     
-    cargarModulo({pagina : "verContratos_Archivos", titulo : "Archivos de " + $(Contrato).text(), icono : "icon-edit"}, function()
+    $(this).cargarModulo({pagina : "verContratos_Archivos", titulo : "Archivos de " + $(Contrato).text(), icono : "icon-edit"}, function()
       {
         iniciarFinder(idContrato);      
       });
@@ -121,11 +121,10 @@ function editarContrato_()
 {
   var Contrato = $(this).parent("div").parent("div").find("h4");
   var pIdContrato = $(Contrato).attr("idContrato");
-   cargarModulo({pagina : "editarContrato", titulo : "Editar " + $(Contrato).text() ,icono : "icon-edit"}, function()
+   $(this).cargarModulo({pagina : "editarContrato", titulo : "Editar " + $(Contrato).text() ,icono : "icon-edit"}, function()
     {
       cargarDatosContrato(pIdContrato)
     });
-   
 }
 function iniciarFinder(idContrato)
 {
