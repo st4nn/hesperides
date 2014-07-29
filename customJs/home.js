@@ -235,8 +235,9 @@ function Mensaje(Titulo, Mensaje)
 function cargarModulo(pagina, titulo, icono)
 {
   var texto = titulo;
-  titulo = "modulo_" + titulo.replace(" ", "_");
-  titulo = titulo.replace(".", "_");
+  titulo = pagina;
+  titulo = "modulo_" + titulo.replace(/ /g, "_");
+  titulo = titulo.replace(/./g, "_");
   var tds = "";
   $(".widget-body").slideUp();
   $(".icon-chevron-up").removeClass("icon-chevron-up").addClass("icon-chevron-down");
@@ -246,6 +247,7 @@ function cargarModulo(pagina, titulo, icono)
      $('#' + titulo).show('slide');
      $("#" + titulo + " .widget-body").slideDown();
      $("#" + titulo + " .icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
+     $("#" + titulo + " .widget-title h4 span").text(texto);
   } else
   {
     tds +='<div id="' + titulo + '" class="">';
@@ -263,7 +265,12 @@ function cargarModulo(pagina, titulo, icono)
     tds +='</div>';
     
     $("#contenedorModulos").append(tds);  
-    $.post("cargarFrame.php", {archivo: pagina + ".html"}, 
+     var n = pagina.search(".html");
+     if (n < 1)
+     {
+        pagina = pagina + ".html";
+     }
+    $.post("cargarFrame.php", {archivo: pagina}, 
       function(data)
       {
         $("#" + titulo + " .widget-body").html(data);  
@@ -342,4 +349,22 @@ function cargarInicio()
                 $("#txtEstadisticas").slideUp();
                 $("#txtError").slideDown();
               });
+}
+
+HTTP_GET_VARS=new Array();
+strGET=document.location.search.substr(1,document.location.search.length);
+if(strGET!='')
+    {
+    gArr=strGET.split('&');
+    for(i=0;i<gArr.length;++i)
+        {
+        v='';vArr=gArr[i].split('=');
+        if(vArr.length>1){v=vArr[1];}
+        HTTP_GET_VARS[unescape(vArr[0])]=unescape(v);
+        }
+    }
+
+function GET(v) {
+  if(!HTTP_GET_VARS[v]){return 'undefined';}
+  return HTTP_GET_VARS[v];
 }

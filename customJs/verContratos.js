@@ -4,7 +4,8 @@ function verContratos()
          $("#frmVerContratos .chosen").chosen();
          $('.tooltips').tooltip();
 
-         $(".objArchivos").live("click", verArchivos);
+         $(".btnVerContrato_Archivos").live("click", verArchivos);
+         $(".btnVerContrato_Detalles").live("click", editarContrato_);
 
          $("#txtVerContratos_BuscarPor").chosen().change(txtVerContratos_BuscarPor_Click);
 
@@ -70,7 +71,7 @@ function btnVerContratos_Buscar_Click()
                   tds += '<div class="span4">';
                   tds += '<div class="widget">';
                   tds += '   <div class="widget-title">';
-                  tds += '       <h4><i class="icon-reorder"></i>' + value.Nombre + '</h4>';
+                  tds += '       <h4 idContrato="' + value.idContrato + '"><i class="icon-reorder"></i>' + value.Nombre + '</h4>';
                   tds += '       <span class="tools">';
                   tds += '          <a class="icon-chevron-down" href="javascript:;"></a>';
                   tds += '          <a class="icon-remove" href="javascript:;"></a>';
@@ -85,8 +86,8 @@ function btnVerContratos_Buscar_Click()
                   tds += '       </div>';
                   tds += '   </div>';
                   tds += '   <div class="form-actions">';
-                  tds += '     <button  class="btn btn-warning objArchivos" idContrato="' + value.checkSum + '"><i class="icon-copy icon-white"></i> Archivos</button>';
-                  tds += '     <button class="btn btn-info"><i class="icon-search icon-white"></i> Detalles</button>';
+                  tds += '     <button  class="btn btn-warning btnVerContrato_Archivos" idContrato="' + value.checkSum + '"><i class="icon-copy icon-white"></i> Archivos</button>';
+                  tds += '     <button class="btn btn-info btnVerContrato_Detalles"><i class="icon-search icon-white"></i> Detalles</button>';
                   //tds += '     <button class="btn btn-primary"><i class="icon-legal icon-white"></i> Pruebas</button>';
                   tds += '   </div>';
                   tds += '</div>';
@@ -109,4 +110,11 @@ function btnVerContratos_Buscar_Click()
       Mensaje("Hey", "Tienes que seleccionar por lo menos un parámetro");
     }
       
+}
+function editarContrato_()
+{
+  var Contrato = $(this).parent("div").parent("div").find("h4");
+   cargarModulo("editarContrato", "Editar " + $(Contrato).text() ,"icon-edit");
+   var pIdContrato = $(Contrato).attr("idContrato");
+   cargarDatosContrato(pIdContrato);
 }

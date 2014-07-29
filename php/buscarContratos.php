@@ -50,6 +50,7 @@
          public $Objeto;
          public $Contratante;
          public $Contratista;
+         public $checkSum;
       }
       
       $idx = 0;

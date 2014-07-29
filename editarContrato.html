@@ -1,0 +1,102 @@
+<body class="fixed-top">
+      <!-- BEGIN PAGE -->  
+            <!-- BEGIN PAGE CONTENT-->
+            <div class="row-fluid">
+              <form id='frmEditarContrato' class="form-horizontal">
+                <input type="hidden" id="txtEditarContrato_idContrato">
+                <div class="control-group">
+                    <label class="control-label">Nombre</label>
+                    <div class="controls">
+                        <input type="text" placeholder="Nombre del Contrato" class="input-large" id='txtEditarContrato_Nombre' required/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Descripción</label>
+                    <div class="controls">
+                        <textarea class="input-xxlarge" placeholder='Descripción larga del Contrato' rows="3" id='txtEditarContrato_Descripcion'></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Fecha de Inicio: </label>
+                    <div class="controls">
+                        <div class="input-append" id="grpEditarContratoFechaInicio">
+                            <input type="text" class="m-wrap medium" id='txtEditarContrato_FechaInicio' required/>
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Fecha de Terminación: </label>
+                    <div class="controls">
+                        <div class="input-append" id="grpEditarContratoFechaTerminacion">
+                            <input type="text" class="m-wrap medium" id='txtEditarContrato_FechaTerminacion'/>
+                            <span class="add-on"><i class="icon-calendar"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Valor del Contrato</label>
+                    <div class="controls">
+                       <div class="input-prepend">
+                          <span class="add-on">$</span><input class=" " type="number" placeholder="Valor del Contrato"  id='txtEditarContrato_Valor'/>
+                       </div>
+                    </div>
+                 </div>
+                 <div class="control-group">
+                    <label class="control-label">Objeto del Contrato</label>
+                    <div class="controls">
+                        <textarea class="input-xxlarge" placeholder='Objeto del Contrato' rows="3" id='txtEditarContrato_Objeto' required></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Responsabilidades del Contrato</label>
+                    <div class="controls">
+                        <textarea class="input-xxlarge" placeholder='Responsabilidades del Contrato' rows="3" id='txtEditarContrato_Responsabilidades'></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label">Contratante</label>
+                    <div class="controls">
+                       <div class="input-prepend">
+                          <span class="add-on  icon-hand-right"></span><input class="input-large" type="text" placeholder="Contratante" id='txtEditarContrato_Contratante' required />
+                       </div>
+                    </div>
+                 </div>
+                 <div class="control-group">
+                    <label class="control-label">Contratista</label>
+                    <div class="controls">
+                       <div class="input-prepend">
+                          <span class="add-on icon-hand-left"></span><input class="input-large" type="text" placeholder="Contratista" id='txtEditarContrato_Contratista' required />
+                       </div>
+                    </div>
+                 </div>
+                  <div class="form-actions">
+                      <button type="submit" class="btn btn-success"><i class="icon-ok"></i> Guardar</button>
+                  </div>
+              </form>
+            </div>
+
+            <!-- END PAGE CONTENT-->         
+         
+      <!-- END PAGE -->  
+   <!-- END CONTAINER -->
+   <!-- BEGIN JAVASCRIPTS -->    
+   <!-- Load javascripts at bottom, this will reduce page load time -->
+   <!-- ie8 fixes -->
+   <!--[if lt IE 9]>
+   <script src="js/excanvas.js"></script>
+   <script src="js/respond.js"></script>
+   <![endif]-->
+   
+   
+ 
+   
+   <script>
+      jQuery(document).ready(function() 
+      {       
+         // initiate layout and plugins
+         editarContrato();         
+      });
+   </script>
+   <!-- END JAVASCRIPTS -->   
+</body>
