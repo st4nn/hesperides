@@ -12,7 +12,7 @@ function appReady()
   $("#tablaMensajes tr").live('click', verCorreo);
 
   //$("#modulo").load("Inicio.html");
-  cargarModulo("Inicio", "Inicio", "icon-dashboard");
+  cargarModulo({pagina : "Inicio", titulo : "Inicio", icono : "icon-dashboard"});
   //$("#tituloDelModulo h4 span").text("Inicio");
 }
 
@@ -88,7 +88,7 @@ function sideMenu(event)
 {
   if (!($(this).hasClass('has-sub')))
   {
-    cargarModulo($(this).attr("pagina"), $(this).text(), $(this).attr("icono"));
+    cargarModulo({pagina : $(this).attr("pagina"), titulo : $(this).text(), icono : $(this).attr("icono")});
     
   }  
 }
@@ -232,28 +232,39 @@ function Mensaje(Titulo, Mensaje)
         text: Mensaje
       });
 }
-function cargarModulo(pagina, titulo, icono)
+var cargarModulo = function(options, callback)
 {
-  var texto = titulo;
-  titulo = pagina;
-  titulo = "modulo_" + titulo.replace(/ /g, "_");
-  titulo = titulo.replace(/./g, "_");
+  var defaults =
+  {
+    pagina : "404",
+    titulo : "Funcion no Encontrada",
+    icono : "icon-ban-circle"
+  }
+  var options = $.extend(defaults, options);
+  if (callback === undefined)
+  {callback = function(){};}
+
+/*plugin*/
+    var nonModulo = options.pagina;
+  nomModulo = options.pagina;
+  nomModulo = "modulo_" + nomModulo.replace(/\s/g, "_");
+  nomModulo = nomModulo.replace(/\./g, "_");
   var tds = "";
   $(".widget-body").slideUp();
   $(".icon-chevron-up").removeClass("icon-chevron-up").addClass("icon-chevron-down");
 
-  if ($('#' + titulo).length)
+  if ($('#' + nomModulo).length)
   {
-     $('#' + titulo).show('slide');
-     $("#" + titulo + " .widget-body").slideDown();
-     $("#" + titulo + " .icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
-     $("#" + titulo + " .widget-title h4 span").text(texto);
+     $('#' + nomModulo).show('slide');
+     $("#" + nomModulo + " .widget-body").slideDown();
+     $("#" + nomModulo + " .icon-chevron-down").removeClass("icon-chevron-down").addClass("icon-chevron-up");
+     $("#" + nomModulo + " .widget-title h4 span").text(options.titulo);
   } else
   {
-    tds +='<div id="' + titulo + '" class="">';
+    tds +='<div id="' + nomModulo + '" class="">';
     tds +='  <div class="widget">';
     tds +='        <div class="widget-title">';
-    tds +='           <h4><i class="' + icono + '"></i><span>Cargando...</span></h4>';
+    tds +='           <h4><i class="' + options.icono + '"></i><span>Cargando...</span></h4>';
     tds +='           <span class="tools">';
     tds +='           <a href="javascript:;" class="icon-chevron-up btnMinimizar"></a>';
     tds +='           <a class="icon-remove btnCerrar" href="javascript:;"></a>';
@@ -265,32 +276,46 @@ function cargarModulo(pagina, titulo, icono)
     tds +='</div>';
     
     $("#contenedorModulos").append(tds);  
-     var n = pagina.search(".html");
+     var n = options.pagina.search(".html");
      if (n < 1)
      {
-        pagina = pagina + ".html";
+        options.pagina = options.pagina + ".html";
      }
-    $.post("cargarFrame.php", {archivo: pagina}, 
+    $.post("cargarFrame.php", {archivo: options.pagina}, 
       function(data)
       {
-        $("#" + titulo + " .widget-body").html(data);  
-        //$("#" + titulo + " .widget-body").html("<h1>Listo</h1>");
+        $("#" + nomModulo + " .widget-body").html(data);  
+        //$("#" + nomModulo + " .widget-body").html("<h1>Listo</h1>");
       }, "html").always(function()
       {
-          $("#" + titulo + " .widget-title h4 span").text(texto);
-          /*$("#" + titulo + " .widget-title h4 i").removeClass('*');
-          $("#" + titulo + " .widget-title h4 i").addClass(icono);        
+          $("#" + nomModulo + " .widget-title h4 span").text(options.titulo);
+          /*$("#" + nomModulo + " .widget-title h4 i").removeClass('*');
+          $("#" + nomModulo + " .widget-title h4 i").addClass(icono);        
           */
 
-          minimizarPorlet(titulo);
-          cerrarPorlet(titulo);
+          minimizarPorlet(nomModulo);
+          cerrarPorlet(nomModulo);
+
+          if (callback === undefined)
+                {callback = function(){};}
+
+            callback();
+
+          if (options.pagina == "Inicio")
+          {
+            cargarInicio();
+          }
       });
   }
-  if (pagina == "Inicio")
-  {
-    cargarInicio();
-  }
-}
+
+
+/*plugin*/
+
+//Averigua si el parámetro contiene una función de ser así llamarla
+  if($.isFunction(options.onComplete)) 
+  {options.onComplete.call();}
+};
+
 function minimizarPorlet(id)
 {
   //jQuery('#' + id + ' .widget .tools .icon-chevron-down, #' + id + '.widget .tools .icon-chevron-up').on("click", function () {

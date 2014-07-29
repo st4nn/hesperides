@@ -15,8 +15,14 @@ function verContratos()
 
 function verArchivos()
 {
-  var str = "Archivos/index.html?par=" + $(this).attr("idContrato");
-	popupWin = window.open(str, 'open_window');
+    var Contrato = $(this).parent("div").parent("div").find("h4");
+    var idContrato = $(this).attr("idContrato");
+
+    
+    cargarModulo({pagina : "verContratos_Archivos", titulo : "Archivos de " + $(Contrato).text(), icono : "icon-edit"}, function()
+      {
+        iniciarFinder(idContrato);      
+      });
 }
 function cerrarPorlet_()
  {
@@ -117,4 +123,30 @@ function editarContrato_()
    cargarModulo("editarContrato", "Editar " + $(Contrato).text() ,"icon-edit");
    var pIdContrato = $(Contrato).attr("idContrato");
    cargarDatosContrato(pIdContrato);
+}
+function iniciarFinder(idContrato)
+{
+  console.log($('#verContratos_Archivos').length);
+  if($('#verContratos_Archivos').elfinder('instance'))
+    { $('#verContratos_Archivos').elfinder('destroy');}
+              
+    var elf = $('#verContratos_Archivos').elfinder({
+          url : 'Archivos/php/connector.php?Contrato=' + idContrato,
+          lang: 'es',  
+          handlers:
+          {
+            upload : function(event) 
+                { 
+                  
+                },
+            open: function(event)
+                { 
+                  
+                },
+            rm : function(event)
+                {
+                  
+                }
+          }           
+    }).elfinder('instance');
 }
