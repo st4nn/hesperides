@@ -9,6 +9,7 @@ function frmSignIn_submit(event)
 {
   event.preventDefault();
   var cDate = new Date();
+
   $.post("php/validarUsuario.php", 
     {
       pUsuario : $("#txtUsuario").val(),
@@ -22,8 +23,14 @@ function frmSignIn_submit(event)
         window.location.replace("home.html");
       } else
       {
+        $(".alert").html("<strong>Error!</strong> Acceso denegado.");
         $(".alert").fadeIn(300).delay(2600).fadeOut(600);
       }
       
-    }, 'json');
+    }, 'json').fail(function()
+    {
+      $(".alert").html("<strong>Error!</strong> No hay acceso al Servidor, por favor revisa tu conexión a red.");
+      $(".alert").fadeIn(300).delay(2600).fadeOut(600);
+    });
+  
 }

@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport" />
 		<title>Archivos del Contrato</title>
 
 		<!-- jQuery and jQuery UI (REQUIRED) -->
@@ -21,9 +22,29 @@
 
 		<!-- elFinder initialization (REQUIRED) -->
 		<script type="text/javascript" charset="utf-8">
+
+		HTTP_GET_VARS=new Array();
+strGET=document.location.search.substr(1,document.location.search.length);
+if(strGET!='')
+    {
+    gArr=strGET.split('&');
+    for(i=0;i<gArr.length;++i)
+        {
+        v='';vArr=gArr[i].split('=');
+        if(vArr.length>1){v=vArr[1];}
+        HTTP_GET_VARS[unescape(vArr[0])]=unescape(v);
+        }
+    }
+
+function GET(v) {
+  if(!HTTP_GET_VARS[v]){return 'undefined';}
+  return HTTP_GET_VARS[v];
+}
+		var idContrato = GET("par");
+		idContrato = 'php/connector.php?Contrato=' + idContrato;
 			$().ready(function() {
 				var elf = $('#elfinder').elfinder({
-					url : '../Archivos/php/connector.php'  // connector URL (REQUIRED)
+					url :   idContrato// connector URL (REQUIRED)
 					 ,lang: 'es',             // language (OPTIONAL)
 				}).elfinder('instance');
 			});

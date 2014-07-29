@@ -14,7 +14,8 @@ function verContratos()
 
 function verArchivos()
 {
-	popupWin = window.open("Archivos/index.html", 'open_window');
+  var str = "Archivos/index.html?par=" + $(this).attr("idContrato");
+	popupWin = window.open(str, 'open_window');
 }
 function cerrarPorlet_()
  {
@@ -84,7 +85,7 @@ function btnVerContratos_Buscar_Click()
                   tds += '       </div>';
                   tds += '   </div>';
                   tds += '   <div class="form-actions">';
-                  tds += '     <button  class="btn btn-warning objArchivos"><i class="icon-copy icon-white"></i> Archivos</button>';
+                  tds += '     <button  class="btn btn-warning objArchivos" idContrato="' + value.checkSum + '"><i class="icon-copy icon-white"></i> Archivos</button>';
                   tds += '     <button class="btn btn-info"><i class="icon-search icon-white"></i> Detalles</button>';
                   //tds += '     <button class="btn btn-primary"><i class="icon-legal icon-white"></i> Pruebas</button>';
                   tds += '   </div>';

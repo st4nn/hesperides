@@ -46,6 +46,8 @@
       $link->query(utf8_decode($sql));
          if ( $link->affected_rows > 0)
          {
+            $nuevoId = $link->insert_id;
+            mkdir ("../Archivos/files/" . md5($link->insert_id));
             echo 1;
          } else
          {

@@ -62,6 +62,7 @@
             $Contratos[$idx]->Objeto = utf8_encode($row['Objeto']);
             $Contratos[$idx]->Contratante = utf8_encode($row['Contratante']);
             $Contratos[$idx]->Contratista = utf8_encode($row['Contratista']);
+            $Contratos[$idx]->checkSum = md5(utf8_encode($row['idContrato']));
 
             $idx++;
          }
